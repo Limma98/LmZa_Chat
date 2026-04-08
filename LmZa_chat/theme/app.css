@@ -1,0 +1,234 @@
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap");
+
+* {
+    font-family: var(--font-family) !important;
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: var(--text-color);
+    font-size: 0.82rem;
+}
+
+/* ── Chat window — narrow, left side ── */
+.chat-window {
+    height: 25% !important;
+    width: 280px !important;
+    background: inherit !important;
+}
+
+/* ── Messages list ── */
+.chat-messages {
+    height: 100%;
+    margin: 0;
+    font-size: inherit;
+    color: var(--faint-color);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.msg {
+    margin: 0.3rem 0;
+}
+
+/* ── Message bubble — HUD bracket style ── */
+.message-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+
+    padding: 0.4rem 0.65rem;
+    overflow-wrap: anywhere;
+    width: fit-content;
+    max-width: 260px;
+
+    background-color: var(--main-color);
+    border: 1px solid var(--border-color);
+    border-left: 2px solid var(--accent-color);
+    border-radius: 5px;
+
+    position: relative;
+    overflow: visible;
+}
+
+/* ── Corner brackets on each bubble ── */
+.bk {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-color: var(--accent-color);
+    border-style: solid;
+    opacity: 0.85;
+}
+.bk-tl { top: -1px;    left: -1px;  border-width: 1.5px 0 0 1.5px; }
+.bk-tr { top: -1px;    right: -1px; border-width: 1.5px 1.5px 0 0; }
+.bk-bl { bottom: -1px; left: -1px;  border-width: 0 0 1.5px 1.5px; }
+.bk-br { bottom: -1px; right: -1px; border-width: 0 1.5px 1.5px 0; }
+
+/* ── Author line ── */
+.author {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--text-color);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    line-height: 1;
+    margin-bottom: 0.1rem;
+}
+
+/* Message icons via background images */
+.alt {
+    background-image: var(--message-icon-url);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 0.8rem;
+    padding-left: 1.1rem;
+}
+
+.console {
+    background-image: var(--console-icon-url);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 0.8rem;
+    padding-left: 1.1rem;
+}
+
+.join {
+    background-image: var(--join-icon-url);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 0.8rem;
+    padding-left: 1.1rem;
+}
+
+.quit {
+    background-image: var(--quit-icon-url);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 0.8rem;
+    padding-left: 1.1rem;
+}
+
+.user {
+    background-image: var(--user-icon-url);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 0.8rem;
+    padding-left: 1.1rem;
+}
+
+.print,
+.print * {
+    font-family: var(--console-font-family) !important;
+}
+
+.multiline {
+    margin-left: 0;
+    text-indent: 0;
+}
+
+/* ── System / join / quit bubbles — dimmer accent ── */
+.message-wrapper:has(.join),
+.message-wrapper:has(.quit) {
+    border-left-color: rgba(0, 255, 255, 0.3);
+    background-color: rgba(0, 8, 14, 0.6);
+}
+
+.message-wrapper:has(.join) .bk,
+.message-wrapper:has(.quit) .bk {
+    opacity: 0.3;
+}
+
+/* ── Input box ── */
+.chat-input {
+    background-color: var(--main-color);
+    border-radius: 5px;
+    top: 28% !important;
+    width: 280px !important;
+    font-size: inherit;
+}
+
+.chat-input > div.input {
+    align-items: center;
+    transform: translateX(-1px);
+    background-color: var(--main-color);
+    border: 1px solid var(--accent-color);
+    border-left: 2px solid var(--accent-color);
+    border-radius: 5px;
+}
+
+textarea {
+    display: block;
+    min-height: 100% !important;
+    padding: 0;
+    padding-left: 0.65rem;
+    resize: none;
+    box-sizing: content-box;
+    line-height: 1.5rem;
+    font-size: inherit;
+    text-overflow: ellipsis;
+    color: var(--text-color);
+    border-width: 0;
+}
+
+.chat-input > div.input::after {
+    content: '';
+    height: 2.2rem;
+    width: 2.2rem;
+    background-image: var(--input-icon-url);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1rem;
+}
+
+.prefix {
+    height: fit-content;
+    margin: 0;
+    padding-left: 0.8rem;
+    line-height: 1rem;
+    font-size: inherit;
+    color: var(--accent-color);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+/* ── Suggestions dropdown ── */
+.suggestions {
+    padding: 0.25rem 0.65rem;
+    font-size: inherit;
+    color: var(--text-color);
+    background-color: var(--main-color);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+.help {
+    color: var(--faint-color);
+    font-weight: normal;
+}
+
+.disabled {
+    color: var(--faint-color);
+    font-weight: normal;
+}
+
+.suggestion {
+    margin: 0.4rem 0;
+    font-weight: bold;
+}
+
+.suggestion * {
+    font-family: var(--suggestion-font-family) !important;
+}
+
+.chat-hide-state {
+    position: absolute;
+}

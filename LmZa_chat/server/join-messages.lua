@@ -1,0 +1,2 @@
+-- Allow native FiveM join/quit messages to show as-is
+-- (no custom handling needed — avoids chat export dependency)
