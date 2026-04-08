@@ -6,3 +6,6 @@ AddEventHandler('chatMessage', function(source, author, text)
         args = { author, text },
     })
 end)
+
+-- end --
+-- message event handler
